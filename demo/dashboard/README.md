@@ -22,7 +22,8 @@ simple seeming tool in Python for generating dashboards (example deployed on Her
 popular tool, written in Go (used on my previous team). 
 dashboard is built manually with button clicks via a system installation
 
-[mozaik](https://github.com/plouc/mozaik)
+~[mozaik](https://github.com/plouc/mozaik)~
+Design is a bit unprofessional
 node.js and react based dashboard tool
 
 [freeboard](https://github.com/Freeboard/freeboard)
