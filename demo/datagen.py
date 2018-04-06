@@ -5,7 +5,7 @@ import datetime
 class DataGen:
     def __init__(self):
         """
-        initialize type annotations
+        initialize type annotations and data structures
         """
         self.sensor_dict = {}
         self.batch_list = []
@@ -16,7 +16,7 @@ class DataGen:
         self.power_consumption: float
         self.operational: bool
 
-    def __flow_relationship__(self, vibration: float, pressure: float) -> float:
+    def __flow_relationship(self, vibration: float, pressure: float) -> float:
         """
         construct arbitrary relationship between vibration, pressure, and flow
 
@@ -32,7 +32,7 @@ class DataGen:
 
         return flow
 
-    def __power_gen__(self) -> float:
+    def __power_gen(self) -> float:
         """
         create power consumption variable
 
@@ -56,15 +56,16 @@ class DataGen:
 
     def dict_gen(self) -> Dict:
         """
+        Generates a dictionary corresponding to a single sensor reading.
 
         :return: dictionary of attributes collected from sensor
         """
         self.sensor_dict['timestamp'] = self.timestamp
         self.sensor_dict['vibration_sensor'] = np.random.normal(8,2,1)[0]
         self.sensor_dict['pressure'] = np.random.normal(1,.1,1)[0]
-        self.sensor_dict['flow'] = self.__flow_relationship__(self.sensor_dict['vibration_sensor'],
+        self.sensor_dict['flow'] = self.__flow_relationship(self.sensor_dict['vibration_sensor'],
                                                        self.sensor_dict['pressure']) # Convert to property?
-        self.sensor_dict['power_consumption'] = self.__power_gen__()
+        self.sensor_dict['power_consumption'] = self.__power_gen()
 
         if 0 < self.sensor_dict['power_consumption']:
             self.sensor_dict['operational'] = True
@@ -76,6 +77,7 @@ class DataGen:
 
     def batch_generator(self, batch_size: int) -> List[Dict]:
         """
+        Generates a list of dictionaries which corresponds to collecting significant data at once.
 
         :param batch_size: int, quantity of sensor observations in list
         :return: list[dict] full batches of data collected from sensors
