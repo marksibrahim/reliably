@@ -2,6 +2,7 @@ import numpy as np
 from typing import List, Dict, NewType
 import datetime
 
+
 class DataGen:
     def __init__(self):
         """
@@ -72,7 +73,6 @@ class DataGen:
         else:
             self.sensor_dict['operational'] = False
 
-
         return self.sensor_dict
 
     def batch_generator(self, batch_size: int) -> List[Dict]:
@@ -86,6 +86,7 @@ class DataGen:
             self.batch_list.append(self.dict_gen())
 
         return self.batch_list
+
 
 if __name__ == "__main__":
     DG = DataGen()

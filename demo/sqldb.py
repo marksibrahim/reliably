@@ -1,12 +1,13 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, Float, String, DateTime, Boolean
 from sqlalchemy_utils import database_exists, create_database
+from sqlalchemy.sql import func, select, delete
 from typing import Dict
-import datetime
+
 
 class DatabaseWriter:
-
-    def __init__(self, engine):
+    def __init__(self, engine, max_table_size=90):
         self.engine = engine
+        self.max_table_size = max_table_size
 
     def data_insertion(self, data_dict: Dict):
         """
@@ -29,6 +30,9 @@ class DatabaseWriter:
         )
 
         self.connection.execute(self.current_state)
+
+        if self.max_table_size is not None:
+            self.__cleanup_dt()
 
     def __create_db(self):
         """
@@ -65,6 +69,25 @@ class DatabaseWriter:
 
         self.metadata.create_all()
 
+    def __cleanup_dt(self):
+        """
+
+        :return: deletes last item in a table
+        """
+
+        count_func = select([func.count(self.system.c.timestamp)])
+        count_table = self.connection.execute(count_func)
+        dt_count = count_table.first().count_1
+        print(dt_count)
+
+        while dt_count > self.max_table_size:
+            min_func = select([func.min(self.system.c.timestamp)])
+            min_time_table = self.connection.execute(min_func)
+            oldest_time = min_time_table.first().min_1
+
+            deletion = delete(self.system).where(self.system.c.timestamp == oldest_time)
+            self.connection.execute(deletion)
+
 if __name__ == "__main__":
-    dbw = DatabaseWriter(engine="postgresql://reliably_ai@localhost:5432/sample_schema_demo")
-    dbw.data_insertion(temp_dict)
+    #dbw = DatabaseWriter(engine="postgresql://reliably_ai@localhost:5432/sample_schema_demo")
+    #dbw.data_insertion()
