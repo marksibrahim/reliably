@@ -27,7 +27,7 @@ class DataGen:
         if self.timestamp.minute < 30:
             flow = 3.*vibration + 3.*pressure + np.random.normal(0,.5,1)[0]
 
-        elif self.timestamp.minute >= 30:
+        else:
             flow = 12.*vibration + 3.*pressure + np.random.normal(0,.5,1)[0]
 
         return flow
@@ -46,7 +46,7 @@ class DataGen:
         elif 40 <= self.timestamp.minute <= 55:
             power_consumption = np.random.normal(83,20,1)[0]
 
-        elif self.timestamp.minute > 55:
+        else:
             power_consumption = 0.
 
         if power_consumption < 0.:
