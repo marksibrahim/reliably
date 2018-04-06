@@ -92,4 +92,3 @@ if __name__ == "__main__":
     DG = DataGen()
     ob = DG.dict_gen()
     print(ob)
-
