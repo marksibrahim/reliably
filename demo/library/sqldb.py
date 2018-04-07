@@ -88,6 +88,3 @@ class DatabaseWriter:
             deletion = delete(self.system).where(self.system.c.timestamp == oldest_time)
             self.connection.execute(deletion)
 
-if __name__ == "__main__":
-    dbw = DatabaseWriter(engine="postgresql://reliably_ai@localhost:5432/sample_schema_demo")
-    #dbw.data_insertion()
