@@ -1,6 +1,5 @@
-from library.datagen import DataGen
-from library.writer import DatabaseWriter
-
+from library import DataGen
+from library import DatabaseWriter
 
 def main(engine: str):
     """
