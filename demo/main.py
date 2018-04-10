@@ -1,5 +1,5 @@
 from library.datagen import DataGen
-from library.sqldb import DatabaseWriter
+from library.writer import DatabaseWriter
 
 
 def main(engine: str):

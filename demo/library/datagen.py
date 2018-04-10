@@ -82,7 +82,7 @@ class DataGen:
         :param batch_size: int, quantity of sensor observations in list
         :return: list[dict] full batches of data collected from sensors
         """
-        for _ in batch_size:
+        for _ in range(batch_size):
             self.batch_list.append(self.dict_gen())
 
         return self.batch_list
