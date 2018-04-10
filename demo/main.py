@@ -1,5 +1,6 @@
 from library import DataGen, DatabaseWriter
 
+
 def main(engine: str):
     """
     Generate (stand-in for collect) micro-batch of data and load onto Datatable while tracking and limiting isze.
