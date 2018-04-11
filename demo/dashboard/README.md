@@ -1,5 +1,9 @@
 # Dashboard
 
+Settled on [Keen-DataViz](https://github.com/keen/keen-dataviz.js). Note Keen provides a service for serving data along
+with other libraries, but the dataviz library can be used alone.
+See [Examples](https://keen.github.io/keen-dataviz.js/)
+
 ## Survey of Tools
 
 [keen dashboards](https://github.com/keen/dashboards)
