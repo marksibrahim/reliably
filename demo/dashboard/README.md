@@ -1,8 +1,6 @@
 # Dashboard
 
-Settled on [Keen-DataViz](https://github.com/keen/keen-dataviz.js). Note Keen provides a service for serving data along
-with other libraries, but the dataviz library can be used alone.
-See [Examples](https://keen.github.io/keen-dataviz.js/)
+Custom Solution using Bootstrap Dashboard Template powered by [chart.js](https://www.chartjs.org/)
 
 ## Survey of Tools
 
