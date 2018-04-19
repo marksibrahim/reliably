@@ -1,4 +1,5 @@
 from library import DataGen, DatabaseWriter
+import os
 
 
 def main(engine: str):
@@ -16,4 +17,5 @@ def main(engine: str):
 
 
 if __name__ == "__main__":
-    main(engine="postgresql://reliably_ai@localhost:5432/sample_schema_demo")
+    psql_db = os.getenv["DATABASE_URL"]
+    main(engine=psql_db)
