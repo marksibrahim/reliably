@@ -17,5 +17,5 @@ def main(engine: str):
 
 
 if __name__ == "__main__":
-    psql_db = os.getenv["DATABASE_URL"]
+    psql_db = os.getenv("DATABASE_URL")
     main(engine=psql_db)

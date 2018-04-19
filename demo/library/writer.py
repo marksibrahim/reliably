@@ -7,6 +7,7 @@ from typing import Dict
 class DatabaseWriter:
     def __init__(self, engine, max_table_size=90):
         self.engine = engine
+        self.db = create_engine(self.engine)
         self.max_table_size = max_table_size
 
     def data_insertion(self, data_dict: Dict):
@@ -17,7 +18,7 @@ class DatabaseWriter:
         :return: None
         """
 
-        self.__create_db()
+        #self.__create_db()
         self.__create_table()
 
         self.current_state = self.system.insert().values(
@@ -41,7 +42,6 @@ class DatabaseWriter:
         :return: string with boolean evaluating DB existence
         """
 
-        self.db = create_engine(self.engine)
         if not database_exists(self.db.url):
             create_database(self.db.url)
             print("DB Created")
