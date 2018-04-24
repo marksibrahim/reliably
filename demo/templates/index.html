@@ -2,7 +2,7 @@
 <!-- based on boostrap dashboard example https://getbootstrap.com/docs/4.1/examples/ -->
 <html lang="en">
 <!-- force refresh every 5 seconds -->
-<meta http-equiv="refresh" content="5">                
+<!--<meta http-equiv="refresh" content="5">                -->
 
   <head>
     <meta charset="utf-8">
@@ -67,7 +67,19 @@
             </div>
           </div>
 
-          <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+	<div class="container">
+	  <div class="row">
+	    <div class="col">
+		    Anomaly Detection
+		  <canvas class="my-4 w-100" id="myChart1" width="600" height="380"></canvas>
+	    </div>
+	    <div class="col">
+		  <canvas class="my-4 w-100" id="myChart2" width="600" height="380"></canvas>
+	    </div>
+	  </div>
+	  </div>
+
 
         </main>
       </div>
@@ -90,7 +102,7 @@
     <!-- Graphs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script>
-      var ctx = document.getElementById("myChart");
+      var ctx = document.getElementById("myChart1");
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -117,6 +129,29 @@
           }
         }
       });
+    </script>
+
+    <script>
+      var ctx2 = document.getElementById("myChart2");
+      var doughnut = new Chart(ctx2, {
+	    type: 'doughnut',
+	    data: {
+	      labels: ["Pressure", "Flow", "Temperature"],
+	      datasets: [
+		{
+		  label: "monitored variables",
+		  backgroundColor: ["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"],
+		  data: [20,70,10]
+		}
+	      ]
+	    },
+	    options: {
+	      title: {
+		display: true,
+		text: 'Monitoring'
+	      }
+	    }
+	});
     </script>
   </body>
 </html>
