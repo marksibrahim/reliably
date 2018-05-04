@@ -11,6 +11,11 @@ To write to DB every 5 minutes, run the following:
 
 `*/5 * * * * [python path] [path to demo directory]/main.py`
 
+
+## Running Tests
+
+`$ pytest test_app.py`
+
 ## Dashboard
 
 
