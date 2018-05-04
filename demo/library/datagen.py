@@ -87,3 +87,6 @@ class DataGen:
 
         return self.batch_list
 
+if __name__ == "__main__":
+    dg = DataGen()
+    print(dg.dict_gen())
