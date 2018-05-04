@@ -2,9 +2,10 @@
 Flask app serving dashboard and generating data endpoints
 """
 
-from flask import Flask, render_template, jsonify
 import sqlalchemy
 import os
+from flask import Flask, render_template, jsonify
+import numpy as np
 
 app = Flask(__name__)
 engine = sqlalchemy.create_engine(os.getenv("DATABASE_URL"))
@@ -24,10 +25,27 @@ def dashboard():
 @app.route("/data/flow")
 def flow_data():
     """Returns json of factors impacting flow"""
+    sql_query = "SELECT vibration_sensor, pressure, flow FROM system_monitoring " \
+                "ORDER BY timestamp DESC LIMIT 1"
+    max_time_table = connection.execute(sql_query).first()
 
-    flow = {"vibration": .4,
-            "pressure": .6,
-            }
+    flow = dict(vibration=max_time_table["vibration_sensor"],
+                pressure=max_time_table["pressure"],
+                true_flow=max_time_table["flow"])
+
+    coeff1 = 3*flow["vibration"] + 3*flow["pressure"]
+    coeff2 = 12*flow["vibration"] + 3*flow["pressure"]
+
+    if abs(flow["true_flow"] - coeff1) < abs(flow["true_flow"] - coeff2):
+        flow["coeff1"] = 3 + np.random.normal(0, .03)
+        flow["coeff2"] = 3 - np.random.normal(0, .03)
+
+    else:
+        flow["coeff1"] = 12 - np.random.normal(0, .03)
+        flow["coeff2"] = 3 + np.random.normal(0, .03)
+
+    flow["expect_flow"] = flow["coeff1"] * flow["vibration"] + \
+                       flow["coeff2"] * flow["pressure"]
 
     return jsonify(flow)
 
@@ -41,7 +59,8 @@ def power_data():
     Returns: json with minutes and anomalous flag (green, yellow, red)
     """
     power = {}
-    query = connection.execute("SELECT * FROM system_monitoring LIMIT 5")
+    query = connection.execute("SELECT * FROM system_monitoring \
+                               ORDER BY timestamp DESC LIMIT 5")
 
     for i, row in enumerate(query):
         power[str(i+1)] = row["power_consumption"]
