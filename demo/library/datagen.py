@@ -26,10 +26,10 @@ class DataGen:
         :return: flow: float
         """
         if self.timestamp.minute < 30:
-            flow = 3.*vibration + 3.*pressure + np.random.normal(0,.5,1)[0]
+            flow = 3.*vibration + 3.*pressure + np.random.normal(0,.5)
 
         else:
-            flow = 12.*vibration + 3.*pressure + np.random.normal(0,.5,1)[0]
+            flow = 12.*vibration + 3.*pressure + np.random.normal(0,.5)
 
         return flow
 
@@ -87,3 +87,6 @@ class DataGen:
 
         return self.batch_list
 
+if __name__ == "__main__":
+    dg = DataGen()
+    print(dg.dict_gen())
