@@ -5,7 +5,7 @@ from typing import Dict
 
 
 class DatabaseWriter:
-    def __init__(self, engine, table_name, max_table_size=90):
+    def __init__(self, engine: str, table_name: str, max_table_size=90):
         self.engine = engine
         self.db = create_engine(self.engine)
         self.max_table_size = max_table_size
