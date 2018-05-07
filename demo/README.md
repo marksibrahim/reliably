@@ -14,7 +14,7 @@ To write to DB every 5 minutes, run the following:
 
 ## Running Tests
 
-`$ pytest test_app.py`
+`$ python -m pytest test_app.py`
 
 ## Dashboard
 
