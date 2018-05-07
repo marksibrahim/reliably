@@ -5,10 +5,11 @@ from typing import Dict
 
 
 class DatabaseWriter:
-    def __init__(self, engine, max_table_size=90):
+    def __init__(self, engine, table_name, max_table_size=90):
         self.engine = engine
         self.db = create_engine(self.engine)
         self.max_table_size = max_table_size
+        self.table_name = table_name
 
     def data_insertion(self, data_dict: Dict):
         """
@@ -24,8 +25,8 @@ class DatabaseWriter:
         self.current_state = self.system.insert().values(
             timestamp = data_dict['timestamp'],
             vibration_sensor = data_dict['vibration_sensor'],
-            flow = data_dict['pressure'],
-            pressure = data_dict['flow'],
+            flow = data_dict['flow'],
+            pressure = data_dict['pressure'],
             power_consumption = data_dict['power_consumption'],
             operational = data_dict['operational']
         )
@@ -58,7 +59,7 @@ class DatabaseWriter:
         self.connection = self.db.connect()
         self.metadata = MetaData(self.connection)
 
-        self.system = Table('system_monitoring', self.metadata,
+        self.system = Table(self.table_name, self.metadata,
                        Column('timestamp', DateTime(), primary_key=True, nullable=False),
                        Column('vibration_sensor', Float()),
                        Column('flow', Float()),
@@ -78,7 +79,6 @@ class DatabaseWriter:
         count_func = select([func.count(self.system.c.timestamp)])
         count_table = self.connection.execute(count_func)
         dt_count = count_table.first().count_1
-        print(dt_count)
 
         while dt_count > self.max_table_size:
             min_func = select([func.min(self.system.c.timestamp)])
@@ -87,4 +87,5 @@ class DatabaseWriter:
 
             deletion = delete(self.system).where(self.system.c.timestamp == oldest_time)
             self.connection.execute(deletion)
+            dt_count -= 1
 
