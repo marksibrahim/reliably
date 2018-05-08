@@ -71,11 +71,12 @@
 	<div class="container">
 	  <div class="row">
 	    <div class="col">
-		    Anomaly Detection
-		  <canvas class="my-4 w-100" id="myChart1" width="600" height="380"></canvas>
+		  <canvas class="my-4 w-100" id="power-chart" width="600" height="380"></canvas>
+
 	    </div>
 	    <div class="col">
-		  <canvas class="my-4 w-100" id="myChart2" width="600" height="380"></canvas>
+		  <canvas class="my-4 w-100" id="flow-chart" width="600" height="380"></canvas>
+      <p id="expected-flow" class="text-center"></p>
 	    </div>
 	  </div>
 	  </div>
@@ -101,57 +102,12 @@
 
     <!-- Graphs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-      var ctx = document.getElementById("myChart1");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: [81, 77, 82, 75, 80, 84, 97],
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
-    </script>
 
-    <script>
-      var ctx2 = document.getElementById("myChart2");
-      var doughnut = new Chart(ctx2, {
-	    type: 'doughnut',
-	    data: {
-	      labels: ["Pressure", "Flow", "Temperature"],
-	      datasets: [
-		{
-		  label: "monitored variables",
-		  backgroundColor: ["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"],
-		  data: [20,70,10]
-		}
-	      ]
-	    },
-	    options: {
-	      title: {
-		display: true,
-		text: 'Monitoring'
-	      }
-	    }
-	});
-    </script>
+    <!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Dashboard Charts -->
+    <script type="text/javascript" src="{{url_for('static', filename='live-charts.js')}}")></script>
+
   </body>
 </html>
