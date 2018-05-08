@@ -60,7 +60,7 @@ def power_data():
     """
     power = {}
     query = connection.execute("SELECT * FROM system_monitoring \
-                               ORDER BY timestamp DESC LIMIT 5")
+                               ORDER BY timestamp DESC LIMIT 30")
 
     for i, row in enumerate(query):
         power[str(i+1)] = row["power_consumption"]
