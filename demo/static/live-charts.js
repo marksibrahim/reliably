@@ -57,13 +57,15 @@ var ctx = document.getElementById("power-chart");
 var powerChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["0", "1", "2", "3", "4"],
+    labels: ["1", "2", "3", "4","5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15",
+            "16", "17", "18", "19", "20","21", "22", "23", "24", "25","26", "27", "28", "29", "30"],
     datasets: [{
-      data: [81, 77, 82, 75, 80],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0],
       lineTension: 0,
       backgroundColor: 'transparent',
       borderColor: '#007bff',
-      borderWidth: 4,
+      borderWidth: 2,
       pointBackgroundColor: '#007bff'
     }]
   },
@@ -82,7 +84,7 @@ var powerChart = new Chart(ctx, {
 });
 
 
-// Asynchronous Update 
+// Asynchronous Update
 function updatePowerChart() {
   $.ajax({
     url: "/data/power",
@@ -102,7 +104,7 @@ function updatePowerChart() {
           values.push(data[key]);
         }
       });
-      
+
       // update doughnut chart
       powerChart.data.datasets[0].data = values;
       powerChart.data.datasets[0].labels = labels;
