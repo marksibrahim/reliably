@@ -105,10 +105,21 @@ function updatePowerChart() {
         }
       });
 
-      // update doughnut chart
+      // update power chart
       powerChart.data.datasets[0].data = values;
       powerChart.data.datasets[0].labels = labels;
       powerChart.update();
+
+      // update anomaly stats
+      if (data["anomalous"] == "green") {
+      $('#anomaly-status').html('Status Ok');
+      $('#anomaly-status').css({'color': '#009900'});
+      }
+      else {
+      $('#anomaly-status').html('Anomaly Alert');
+      $('#anomaly-status').css({'color': '#cc3700'});
+      }
+
 
     },
     error: function (xhr, status) {
