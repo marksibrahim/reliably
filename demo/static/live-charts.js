@@ -112,12 +112,12 @@ function updatePowerChart() {
 
       // update anomaly stats
       if (data["anomalous"] == "green") {
-      $('#anomaly-status').html('Status Ok');
-      $('#anomaly-status').css({'color': '#009900'});
+        $('#anomaly-status').html('Status Ok');
+        $('#anomaly-status').css({'color': '#009900'});
       }
       else {
-      $('#anomaly-status').html('Anomaly Alert');
-      $('#anomaly-status').css({'color': '#cc3700'});
+        $('#anomaly-status').html('Anomaly Alert');
+        $('#anomaly-status').css({'color': '#cc3700'});
       }
 
 

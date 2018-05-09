@@ -37,12 +37,12 @@ def flow_data():
     coeff2 = 12*flow["vibration"] + 3*flow["pressure"]
 
     if abs(flow["true_flow"] - coeff1) < abs(flow["true_flow"] - coeff2):
-        flow["coeff1"] = 3 + np.random.normal(0, .03)
-        flow["coeff2"] = 3 - np.random.normal(0, .03)
+        flow["coeff1"] = 3 + np.random.normal(0, .4)
+        flow["coeff2"] = 3 - np.random.normal(0, .4)
 
     else:
-        flow["coeff1"] = 12 - np.random.normal(0, .03)
-        flow["coeff2"] = 3 + np.random.normal(0, .03)
+        flow["coeff1"] = 12 - np.random.normal(0, .4)
+        flow["coeff2"] = 3 + np.random.normal(0, .4)
 
     flow["expect_flow"] = flow["coeff1"] * flow["vibration"] + \
                        flow["coeff2"] * flow["pressure"]
