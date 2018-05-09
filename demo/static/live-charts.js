@@ -105,7 +105,7 @@ function updatePowerChart() {
         }
       });
 
-      // update doughnut chart
+      // update line chart
       powerChart.data.datasets[0].data = values;
       powerChart.data.datasets[0].labels = labels;
       powerChart.update();
