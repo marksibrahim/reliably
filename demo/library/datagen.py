@@ -15,6 +15,7 @@ class DataGen:
         self.flow: float
         self.pressure: float
         self.power_consumption: float
+        self.failure_time: float
         self.operational: bool
 
     def __flow_relationship(self, vibration: float, pressure: float) -> float:
@@ -67,6 +68,7 @@ class DataGen:
         self.sensor_dict['flow'] = self.__flow_relationship(self.sensor_dict['vibration_sensor'],
                                                        self.sensor_dict['pressure']) # Convert to property?
         self.sensor_dict['power_consumption'] = self.__power_gen()
+        self.sensor_dict['failure_times'] = np.random.exponential(3)
 
         if 0 < self.sensor_dict['power_consumption']:
             self.sensor_dict['operational'] = True
