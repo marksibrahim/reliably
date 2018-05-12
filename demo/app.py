@@ -76,7 +76,7 @@ def power_data():
 @app.route("/data/ttf")
 def ttf():
     """
-    Fetches historical times to failure (ttf).
+    Fetches historical times to failure (ttf). Fits an exponential distribution to the most recent 10 samples.
 
     :return: JSON with a lambda parameter, values generated.
     """
