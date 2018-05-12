@@ -28,6 +28,7 @@ class DatabaseWriter:
             flow = data_dict['flow'],
             pressure = data_dict['pressure'],
             power_consumption = data_dict['power_consumption'],
+            failure_times = data_dict['failure_times'],
             operational = data_dict['operational']
         )
 
@@ -65,6 +66,7 @@ class DatabaseWriter:
                        Column('flow', Float()),
                        Column('pressure', Float()),
                        Column('power_consumption', Float()),
+                       Column('failure_times', Float()),
                        Column('operational', Boolean())
                        )
 
