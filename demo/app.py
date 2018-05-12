@@ -76,7 +76,7 @@ def power_data():
 @app.route("/data/ttf")
 def ttf():
     """
-    Fetches historical times to failure.
+    Fetches historical times to failure (ttf).
 
     :return: JSON with a lambda parameter, values generated.
     """

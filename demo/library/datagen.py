@@ -43,10 +43,10 @@ class DataGen:
         power_consumption = -1.
 
         if self.timestamp.minute < 40:
-            power_consumption = np.random.normal(83, 10, 1)[0]
+            power_consumption = np.random.normal(83, 10)
 
         elif 40 <= self.timestamp.minute <= 55:
-            power_consumption = np.random.normal(83,20,1)[0]
+            power_consumption = np.random.normal(83,20)
 
         else:
             power_consumption = 0.
@@ -63,8 +63,8 @@ class DataGen:
         :return: dictionary of attributes collected from sensor
         """
         self.sensor_dict['timestamp'] = self.timestamp
-        self.sensor_dict['vibration_sensor'] = np.random.normal(8,2,1)[0]
-        self.sensor_dict['pressure'] = np.random.normal(1,.1,1)[0]
+        self.sensor_dict['vibration_sensor'] = np.random.normal(8,2)
+        self.sensor_dict['pressure'] = np.random.normal(1,.1)
         self.sensor_dict['flow'] = self.__flow_relationship(self.sensor_dict['vibration_sensor'],
                                                        self.sensor_dict['pressure']) # Convert to property?
         self.sensor_dict['power_consumption'] = self.__power_gen()
