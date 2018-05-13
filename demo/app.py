@@ -59,18 +59,46 @@ def power_data():
     Returns: json with minutes and anomalous flag (green, yellow, red)
     """
     power = {}
-    query = connection.execute("SELECT * FROM system_monitoring \
+    query = connection.execute("SELECT power_consumption FROM system_monitoring \
                                ORDER BY timestamp DESC LIMIT 30")
 
     for i, row in enumerate(query):
         power[str(i+1)] = row["power_consumption"]
 
-    if power["5"] < 53 or power["5"] > 113:
+    if power["30"] < 53 or power["30"] > 113:
         power["anomalous"] = "red"
     else:
         power["anomalous"] = "green"
 
     return jsonify(power)
+
+
+@app.route("/data/ttf")
+def ttf():
+    """
+    Fetches historical times to failure (ttf). Fits an exponential distribution to the most recent 10 samples.
+
+    :return: JSON with a lambda parameter, values generated.
+    """
+    ttf = {}
+    ttf['failure'] = {}
+    ttf['survivability'] = {}
+
+    query = connection.execute("SELECT failure_times FROM system_monitoring \
+                               ORDER BY timestamp DESC LIMIT 10")
+
+    for i, row in enumerate(query):
+        ttf['failure'][i+1] = row["failure_times"]
+
+    x_sum = sum(ttf['failure'].values())
+    n_vals = len(ttf['failure'].keys())
+    ttf["lambda"] = n_vals/x_sum
+
+    input_surv = np.linspace(0,8,10)
+    for i, item in enumerate(input_surv):
+        ttf["survivability"][i+1] = np.exp(-ttf["lambda"]*item)
+
+    return jsonify(ttf)
 
 
 if __name__ == "__main__":
