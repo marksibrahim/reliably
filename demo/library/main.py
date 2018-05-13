@@ -1,4 +1,5 @@
-from library import DataGen, DatabaseWriter
+from datagen import DataGen
+from writer import DatabaseWriter
 import os
 
 

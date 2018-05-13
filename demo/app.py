@@ -81,19 +81,22 @@ def ttf():
     :return: JSON with a lambda parameter, values generated.
     """
     ttf = {}
+    ttf['failure'] = {}
+    ttf['survivability'] = {}
+
     query = connection.execute("SELECT failure_times FROM system_monitoring \
                                ORDER BY timestamp DESC LIMIT 10")
 
     for i, row in enumerate(query):
-        ttf["{}_failure".format(str(i+1))] = row["failure_times"]
+        ttf['failure'][i+1] = row["failure_times"]
 
-    x_sum = sum(ttf.values())
-    n_vals = len(ttf.keys())
+    x_sum = sum(ttf['failure'].values())
+    n_vals = len(ttf['failure'].keys())
     ttf["lambda"] = n_vals/x_sum
 
     input_surv = np.linspace(0,8,10)
     for i, item in enumerate(input_surv):
-        ttf["{}_survivability".format(i+1)] = np.exp(-ttf["lambda"]*item)
+        ttf["survivability"][i+1] = np.exp(-ttf["lambda"]*item)
 
     return jsonify(ttf)
 

@@ -21,6 +21,7 @@ def run_writer_flow():
         pressure=1.0,
         flow=9.0,
         power_consumption=.01,
+        failure_times=1.0,
         operational=True
     )
     db_url = os.getenv("DATABASE_URL")
@@ -46,6 +47,7 @@ def test_db_writer(run_writer_flow):
     assert returned_row["flow"] == 9.0
     assert returned_row["power_consumption"] == .01
     assert returned_row["operational"] == True
+    assert returned_row["failure_times"] == 1.0
 
 
 def test_length_of_db(run_writer_flow):
