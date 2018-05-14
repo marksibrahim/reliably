@@ -131,6 +131,34 @@ function updatePowerChart() {
   });
 }
 
+
+// Survivability Chart
+var ctx3 = document.getElementById("ttf-chart");
+var ttf = new Chart(ctx3, {
+  type: 'line',
+  data: {
+    datasets: [{
+          label: 'Scatter Dataset',
+          borderColor: '#FFFF00',
+          data: [10, 40, 30, 40]
+        }, {
+          label: 'Line Dataset',
+          data: [50, 100, 5, 50],
+          borderColor: '#007bff',
+
+          // Changes this dataset to become a line
+          type: 'line'
+        }],
+    labels: ['January', 'February', 'March', 'April']
+  },
+    options: {
+        title: {
+            display: true,
+            text: 'TTF'
+        }
+    }
+});
+
 // update every 2 seconds
 setInterval(function(){
   updateFlowChart();
