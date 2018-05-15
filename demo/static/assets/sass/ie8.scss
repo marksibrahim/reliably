@@ -1,0 +1,134 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+
+/*
+	Prototype by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+$border: #ddd;
+
+/* Button */
+
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button,
+	.button {
+		-ms-behavior: url('assets/js/ie/PIE.htc');
+		border: solid 1px $border !important;
+		box-shadow: none !important;
+
+		&.special {
+			border: 0 !important;
+		}
+	}
+
+/* Icon */
+
+	.icon {
+		&.major {
+			-ms-behavior: url('assets/js/ie/PIE.htc');
+			border: solid 1px $border;
+		}
+	}
+
+/* Image */
+
+	.image {
+		-ms-behavior: url('assets/js/ie/PIE.htc');
+
+		img {
+			-ms-behavior: url('assets/js/ie/PIE.htc');
+			position: relative;
+		}
+	}
+
+/* Features */
+
+	.features {
+		section {
+			width: 30%;
+		}
+	}
+
+/* Spotlights */
+
+	.spotlights {
+		section {
+			border-top: solid 1px $border;
+		}
+	}
+
+/* Image Circles */
+
+	.image-circles {
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		.images {
+			width: 50%;
+			float: left;
+			margin: 0;
+
+			> * {
+				margin: 0;
+				width: 50%;
+
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+/* Wrapper */
+
+	.wrapper {
+		&.split {
+			> .inner {
+				> :first-child {
+					padding-right: (_size(section-spacing) * 0.5);
+				}
+			}
+		}
+	}
+
+/* Banner */
+
+	#banner {
+		@include padding(9em, 0, (2em, 0, 0, 0));
+		-ms-behavior: url('assets/js/ie/backgroundsize.min.htc');
+
+		&:before {
+			display: none;
+		}
+	}
+
+/* Footer */
+
+	#footer {
+		-ms-behavior: url('assets/js/ie/backgroundsize.min.htc');
+
+		&:before {
+			display: none;
+		}
+	}
+
+/* Main */
+
+	#main {
+		> header {
+			-ms-behavior: url('assets/js/ie/backgroundsize.min.htc');
+
+			&:before {
+				display: none;
+			}
+		}
+	}

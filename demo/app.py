@@ -18,8 +18,13 @@ def hello_world():
 
 
 @app.route("/")
-def dashboard():
+def landing():
     return render_template("index.html")
+
+
+@app.route("/demo")
+def dashboard():
+    return render_template("demo.html")
 
 
 @app.route("/data/flow")
