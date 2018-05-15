@@ -1,113 +1,172 @@
-<!doctype html>
-<!-- based on boostrap dashboard example https://getbootstrap.com/docs/4.1/examples/ -->
-<html lang="en">
-<!-- force refresh every 5 seconds -->
-<!--<meta http-equiv="refresh" content="5">                -->
+<!DOCTYPE HTML>
+<!--
+	Prototype by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Reliably</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+	</head>
+	<body>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Reliably</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ url_for('static', filename='dashboard.css') }}" rel="stylesheet">
-  </head>
-
-  <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Reliably</a>
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#"></a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-		  About Us
-                </a>
-              </li>
-            </ul>
-
-          </div>
-        </nav>
-
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Reliably Demo</h1>
-          </div>
+		<!-- Header -->
+			<header id="header" class="alt">
+				<h1><a href="index.html">Reliably</a></h1>
+			</header>
 
 
-	<div class="container">
-	  <div class="row">
-	    <div class="col">
-		  <canvas class="my-4 w-100" id="power-chart" width="300" height="190"></canvas>
-      <p id="anomaly-status" class="text-center"> Status Ok </p>
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<div class="content">
+						<h2>Reliably.ai</h2>
+						<p>Live System Health Forecasting Powered by AI</p>
+					</div>
+					<ul class="actions vertical">
+						<li><a href="#" class="button special major">Demo</a></li>
+						<li><a href="#" class="button major">Contact Us</a></li>
+					</ul>
+				</div>
+			</section>
 
-	    </div>
-	    <div class="col">
-		  <canvas class="my-4 w-100" id="flow-chart" width="300" height="190"></canvas>
-      <p id="expected-flow" class="text-center"></p>
-	    </div>
-	  </div>
+		<!-- One -->
+			<section id="one" class="wrapper style1 split">
+				<div class="inner">
+					<div class="content">
+						<h2>Reliably</h2>
+						<p>Reliably brings Artificial Intelligence to prognostics and health monitoring.
+                            Our platform captures all of your data in real-time to deliver risk and prognostic analytics for any mechanical,
+                            electrical, or structural system.
+                        </p>
+						<ul class="actions">
+							<li><a href="#" class="button">Our Story</a></li>
+						</ul>
+					</div>
+					<div class="image-circles">
+						<div class="images">
+							<span class="image"><img src="{{ url_for('static', filename='images/pic01.jpg') }}" alt="" /></span>
+							<span class="image"><img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt="" /></span>
+						</div>
+						<div class="images">
+							<span class="image"><img src="{{ url_for('static', filename='images/pic03.jpg') }}" alt="" /></span>
+							<span class="image"><img src="{{ url_for('static', filename='images/pic04.jpg') }}" alt="" /></span>
+						</div>
+					</div>
+				</div>
+			</section>
 
-        <div class="row">
-            <div class="col-2" style="margin-top: 10rem;">
-            </div>
-            <div class="col-8">
-                <canvas class="my-4 w-100" id="ttf-chart" width="300" height="190"></canvas>
-            </div>
-            <div class="col-2" style="margin-top: 10rem;">
-                <p id="lambda"> <b>&lambda;</b> = 2.87</p>
-            </div>
-        </div>
-	  </div>
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<header class="major">
+						<h2>Reliably.AI and You</h2>
+						<p>actionable prognostics</p>
+					</header>
+					<div class="features">
+						<section>
+							<span class="icon major fa-cube"></span>
+							<h3>Quam adipiscing</h3>
+							<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
+						</section>
+						<section>
+							<span class="icon major fa-file-text"></span>
+							<h3>Semper accumsan</h3>
+							<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
+						</section>
+						<section>
+							<span class="icon major fa-cloud"></span>
+							<h3>Ipsum lorem magna</h3>
+							<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
+						</section>
 
+					</div>
+					<footer class="major">
+						<ul class="actions">
+							<li><a href="#" class="button major">More Features</a></li>
+						</ul>
+					</footer>
+				</div>
+			</section>
 
-        </main>
-      </div>
-    </div>
+		<!-- Three -->
+			<section id="three" class="wrapper style1">
+				<div class="inner">
+					<div class="spotlights">
+						<section>
+							<span class="image"><img src="{{ url_for('static', filename='images/pic05.jpg') }}" alt="" /></span>
+							<div class="content">
+								<h2>Convallis integer iaculis</h2>
+								<p>Donec elementum odio ut suscipit congue. Fusce magna mattis vel fermentum, ultricies et velit. Suspendisse viverra, ante in eleifend vulputate, lacus lorem pretium ligula, tincidunt posuere sapien neque a augue. Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+							</div>
+						</section>
+						<section>
+							<span class="image"><img src="{{ url_for('static', filename='images/pic06.jpg') }}" alt="" /></span>
+							<div class="content">
+								<h2>Ultrices augue faucibus</h2>
+								<p>Donec elementum odio ut suscipit congue. Fusce magna mattis vel fermentum, ultricies et velit. Suspendisse viverra, ante in eleifend vulputate, lacus lorem pretium ligula, tincidunt posuere sapien neque a augue. Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+							</div>
+						</section>
+						<section>
+							<span class="image"><img src="{{ url_for('static', filename='images/pic07.jpg') }}" alt="" /></span>
+							<div class="content">
+								<h2>Integer sed sodales</h2>
+								<p>Donec elementum odio ut suscipit congue. Fusce magna mattis vel fermentum, ultricies et velit. Suspendisse viverra, ante in eleifend vulputate, lacus lorem pretium ligula, tincidunt posuere sapien neque a augue. Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+							</div>
+						</section>
+					</div>
+				</div>
+			</section>
 
-    <!-- Bootstrap core JavaScript
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<!-- Four -->
+			<section id="four" class="wrapper style2 special">
+				<div class="inner">
+					<header>
+						<h2>Sed vitae massa curabitur</h2>
+						<p>Ipsum quis semper consequat, sem nibh mattis arcu, quis porttitor lorem justo in tellus. Aenean lacinia<br />
+						interdum nisl felis et dui viverra, nec accumsan tempus quam ultricies.</p>
+					</header>
+					<ul class="actions">
+						<li><a href="#" class="button special major">Get Started</a></li>
+					</ul>
+				</div>
+			</section>
 
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon fa-envelope"><span class="label">Envelope</span></a></li>
+					</ul>
+					<ul class="contact">
+						<li>12345 Somewhere Road</li>
+						<li>Nashville, TN 00000</li>
+						<li>(000) 000-0000</li>
+					</ul>
+					<ul class="links">
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Support</a></li>
+						<li><a href="#">Terms</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+					<p class="copyright">&copy; Untitled. All rights reserved. Lorem ipsum dolor.</p>
+				</div>
+			</footer>
 
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+		<!-- Scripts -->
+            <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='assets/js/jquery.scrollex..min.js') }}"></script>
+            <script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+            <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 
-    <!-- Ajax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Dashboard Charts -->
-    <script type="text/javascript" src="{{url_for('static', filename='live-charts.js')}}")></script>
-
-  </body>
+	</body>
 </html>

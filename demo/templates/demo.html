@@ -1,0 +1,113 @@
+<!doctype html>
+<!-- based on boostrap dashboard example https://getbootstrap.com/docs/4.1/examples/ -->
+<html lang="en">
+<!-- force refresh every 5 seconds -->
+<!--<meta http-equiv="refresh" content="5">                -->
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Reliably</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='dashboard.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Reliably</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+		  About Us
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Reliably Demo</h1>
+          </div>
+
+
+	<div class="container">
+	  <div class="row">
+	    <div class="col">
+		  <canvas class="my-4 w-100" id="power-chart" width="300" height="190"></canvas>
+      <p id="anomaly-status" class="text-center"> Status Ok </p>
+
+	    </div>
+	    <div class="col">
+		  <canvas class="my-4 w-100" id="flow-chart" width="300" height="190"></canvas>
+      <p id="expected-flow" class="text-center"></p>
+	    </div>
+	  </div>
+
+        <div class="row">
+            <div class="col-2" style="margin-top: 10rem;">
+            </div>
+            <div class="col-8">
+                <canvas class="my-4 w-100" id="ttf-chart" width="300" height="190"></canvas>
+            </div>
+            <div class="col-2" style="margin-top: 10rem;">
+                <p id="lambda"> <b>&lambda;</b> = 2.87</p>
+            </div>
+        </div>
+	  </div>
+
+
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+    <!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Dashboard Charts -->
+    <script type="text/javascript" src="{{url_for('static', filename='live-charts.js')}}")></script>
+
+  </body>
+</html>
