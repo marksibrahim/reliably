@@ -21,7 +21,7 @@ def test_flow_data(client):
 
     assert "vibration" in flow_data_json
     assert "pressure" in flow_data_json
-    assert flow_data_json["vibration"] == .4
+    assert "expect_flow" in flow_data_json
 
 
 def test_power_data(client):
@@ -29,5 +29,4 @@ def test_power_data(client):
     power_data = client.get("/data/power")
     power_data_json = power_data.get_json()
 
-    assert power_data_json["0"] == 10
-    assert power_data_json["anomalous"] == "green"
+    assert power_data_json["anomalous"] in ("green", "red")
