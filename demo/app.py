@@ -82,7 +82,7 @@ def ttf():
     """
     ttf = {}
     ttf['failure'] = {}
-    ttf['survivability'] = {}
+    ttf['reliability'] = {}
 
     query = connection.execute("SELECT failure_times FROM system_monitoring \
                                ORDER BY timestamp DESC LIMIT 10")
@@ -94,9 +94,9 @@ def ttf():
     n_vals = len(ttf['failure'].keys())
     ttf["lambda"] = n_vals/x_sum
 
-    input_surv = np.linspace(0,8,10)
-    for i, item in enumerate(input_surv):
-        ttf["survivability"][i+1] = np.exp(-ttf["lambda"]*item)
+    input_reliability = np.linspace(0,8,10)
+    for i, item in enumerate(input_reliability):
+        ttf["reliability"][i+1] = np.exp(-ttf["lambda"]*item)
 
     return jsonify(ttf)
 

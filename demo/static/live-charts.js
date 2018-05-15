@@ -133,20 +133,20 @@ function updatePowerChart() {
 }
 
 
-// Survivability Chart
+// Reliability Chart
 var ctx3 = document.getElementById("ttf-chart");
 var ttfChart = new Chart(ctx3, {
   type: 'line',
   data: {
       datasets: [{
-          label: 'Survivability',
-          data: [7.8900001, 6.24, 4.92, 3.896, 3.07, 2.42, 1.915, 1.513, 1.198, 1.82],
+          label: 'Reliability (%)',
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           borderColor: '#007bff',
         },
       {
-          label: 'Failure',
+          label: 'Failure Time (Years)',
           borderColor: '#ff0000',
-          data: [8.554, 2.8, 12.39, 7.1334, 5.3029, 2.85, 2.624, 2.3224, 8.5823, 6.39],
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           // Changes to scatter plot
           showLine: false,
           pointStyle: 'cross',
@@ -175,18 +175,18 @@ function updateTTFChart() {
             console.log(data);
             // transform data into arrays for chart
             var labels = [];
-            var survivabilityValues = [];
+            var reliabilityValues = [];
             var failureValues = [];
 
             // get sorted keys and associated values
-            Object.keys(data["survivability"]).sort(compareStrInt).forEach(function(key) {
+            Object.keys(data["reliability"]).sort(compareStrInt).forEach(function(key) {
                 labels.push(key);
                 failureValues.push(data["failure"][key]);
-                survivabilityValues.push(data["survivability"][key]);
+                reliabilityValues.push(data["reliability"][key]);
             });
 
             // update chart values
-            ttfChart.data.datasets[0].data = survivabilityValues;
+            ttfChart.data.datasets[0].data = reliabilityValues;
             ttfChart.data.datasets[1].data = failureValues;
             ttfChart.data.labels = labels;
             ttfChart.update();
