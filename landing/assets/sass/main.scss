@@ -1,0 +1,81 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+@import 'font-awesome.min.css';
+
+/*
+	Prototype by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+	@include skel-breakpoints((
+		xlarge: '(max-width: 1680px)',
+		large: '(max-width: 1280px)',
+		medium: '(max-width: 980px)',
+		small: '(max-width: 736px)',
+		xsmall: '(max-width: 480px)'
+	));
+
+	@include skel-layout((
+		reset: 'full',
+		boxModel: 'border',
+		containers: 80em,
+		grid: ( gutters: 2em ),
+		breakpoints: (
+			large: (
+				containers: 65em,
+				grid: ( gutters: 1.5em )
+			),
+			medium: (
+				containers: 90%
+			),
+			small: (
+				small: (90%, true),
+				grid: ( gutters: 1.25em )
+			)
+		)
+	));
+
+	@mixin color($p) {
+		@include color-typography($p);
+		@include color-box($p);
+		@include color-button($p);
+		@include color-features($p);
+		@include color-form($p);
+		@include color-icon($p);
+		@include color-image-circles($p);
+		@include color-list($p);
+		@include color-section($p);
+		@include color-spotlights($p);
+		@include color-table($p);
+	}
+
+// Base.
+
+	@import 'base/page';
+	@import 'base/typography';
+
+// Component.
+
+	@import 'components/box';
+	@import 'components/button';
+	@import 'components/features';
+	@import 'components/form';
+	@import 'components/icon';
+	@import 'components/image';
+	@import 'components/image-circles';
+	@import 'components/list';
+	@import 'components/section';
+	@import 'components/spotlights';
+	@import 'components/table';
+	@import 'components/wrapper';
+
+// Layout.
+
+	@import 'layout/header';
+	@import 'layout/menu';
+	@import 'layout/banner';
+	@import 'layout/footer';
+	@import 'layout/main';

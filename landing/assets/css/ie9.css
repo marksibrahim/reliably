@@ -1,0 +1,162 @@
+/*
+	Prototype by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Image Circles */
+
+	.image-circles .images:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	.image-circles .images > * {
+		float: left;
+		width: 45%;
+	}
+
+/* Features */
+
+	.features:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	.features section {
+		float: left;
+	}
+
+/* Spotlights */
+
+	.spotlights section:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	.spotlights section .image {
+		float: left;
+		margin-right: 4em;
+	}
+
+	.spotlights section .content {
+		width: auto;
+	}
+
+/* Wrapper */
+
+	.wrapper.split > .inner:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	.wrapper.split > .inner > * {
+		float: left;
+		margin: 0 !important;
+	}
+
+	.wrapper.split > .inner > :nth-child(2n - 1) {
+		margin-right: 0;
+		padding-right: 2em;
+	}
+
+	.wrapper.split > .inner > :nth-child(2n) {
+		padding-left: 0;
+		padding-left: 2em;
+	}
+
+/* Banner */
+
+	#banner {
+		padding: 13.5em 0 7em 0 ;
+		background-image: url("../../images/banner.jpg");
+		height: auto;
+		min-height: 0;
+		position: relative;
+	}
+
+		#banner:before {
+			background-color: #303639;
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		#banner .inner {
+			margin: 0 auto;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+			z-index: 1;
+		}
+
+			#banner .inner .content {
+				display: inline-block;
+			}
+
+			#banner .inner .actions {
+				display: inline-block;
+			}
+
+/* Footer */
+
+	#footer {
+		background-image: url("../../images/banner.jpg");
+		position: relative;
+	}
+
+		#footer:before {
+			background-color: #303639;
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		#footer > .inner {
+			display: block;
+			position: relative;
+			z-index: 1;
+		}
+
+			#footer > .inner > * {
+				width: 100%;
+				text-align: center !important;
+			}
+
+/* Main */
+
+	#main > header {
+		background-image: url("../../images/banner.jpg");
+		position: relative;
+	}
+
+		#main > header:before {
+			background-color: #303639;
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		#main > header > * {
+			position: relative;
+			z-index: 1;
+		}

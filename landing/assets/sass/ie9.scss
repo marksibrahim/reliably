@@ -1,0 +1,185 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+
+/*
+	Prototype by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Image Circles */
+
+	.image-circles {
+		.images {
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			> * {
+				float: left;
+				width: 45%;
+			}
+		}
+	}
+
+/* Features */
+
+	.features {
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		section {
+			float: left;
+		}
+	}
+
+/* Spotlights */
+
+	.spotlights {
+		section {
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			.image {
+				float: left;
+				margin-right: _size(section-spacing);
+			}
+
+			.content {
+				width: auto;
+			}
+		}
+	}
+
+/* Wrapper */
+
+	.wrapper {
+		&.split {
+			> .inner {
+				&:after {
+					content: '';
+					display: block;
+					clear: both;
+				}
+
+				> * {
+					float: left;
+					margin: 0 !important;
+				}
+
+				> :nth-child(2n - 1) {
+					margin-right: 0;
+					padding-right: (_size(section-spacing) * 0.5);
+				}
+
+				> :nth-child(2n) {
+					padding-left: 0;
+					padding-left: (_size(section-spacing) * 0.5);
+				}
+			}
+		}
+	}
+
+/* Banner */
+
+	#banner {
+		@include padding(9em, 0, (4.5em, 0, 0, 0));
+		@include vendor('background-image', 'url("../../images/banner.jpg")');
+		height: auto;
+		min-height: 0;
+		position: relative;
+
+		&:before {
+			background-color: _palette(accent2, bg);
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		.inner {
+			margin: 0 auto;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+			z-index: 1;
+
+			.content {
+				display: inline-block;
+			}
+
+			.actions {
+				display: inline-block;
+			}
+		}
+	}
+
+/* Footer */
+
+	#footer {
+		@include vendor('background-image', 'url("../../images/banner.jpg")');
+		position: relative;
+
+		&:before {
+			background-color: _palette(accent2, bg);
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		> .inner {
+			display: block;
+			position: relative;
+			z-index: 1;
+
+			> * {
+				width: 100%;
+				text-align: center !important;
+			}
+		}
+	}
+
+/* Main */
+
+	#main {
+		> header {
+			@include vendor('background-image', 'url("../../images/banner.jpg")');
+			position: relative;
+
+			&:before {
+				background-color: _palette(accent2, bg);
+				content: '';
+				display: block;
+				height: 100%;
+				left: 0;
+				opacity: 0.2;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+
+			> * {
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
