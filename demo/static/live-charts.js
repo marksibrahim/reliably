@@ -98,7 +98,7 @@ function updatePowerChart() {
       var values = [];
 
       // get sorted keys and associated values
-      Object.keys(data).sort().forEach(function(key) {
+      Object.keys(data).sort(compareStrInt).forEach(function(key) {
         if (key != "anomalous") {
           labels.push(key);
           values.push(data[key]);
@@ -178,7 +178,7 @@ function updateTTFChart() {
             var failureValues = [];
 
             // get sorted keys and associated values
-            Object.keys(data["survivability"]).sort().forEach(function(key) {
+            Object.keys(data["survivability"]).sort(compareStrInt).forEach(function(key) {
                 labels.push(key);
                 failureValues.push(data["failure"][key]);
                 survivabilityValues.push(data["survivability"][key]);
@@ -189,7 +189,6 @@ function updateTTFChart() {
             ttfChart.data.datasets[1].data = failureValues;
             ttfChart.data.labels = labels;
             ttfChart.update();
-
 
             // update lambda value
             var lambdaVal = data["lambda"].toFixed(3);
@@ -204,9 +203,13 @@ function updateTTFChart() {
     });
 }
 
+function compareStrInt(a, b){
+    return a - b
+}
+
 // update every 2 seconds
 setInterval(function(){
  updateFlowChart();
  updatePowerChart();
  updateTTFChart();
-}, 2000);
+}, 10000);
