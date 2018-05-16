@@ -6,6 +6,7 @@ import sqlalchemy
 import os
 from flask import Flask, render_template, jsonify
 import numpy as np
+import datetime
 
 app = Flask(__name__)
 engine = sqlalchemy.create_engine(os.getenv("DATABASE_URL"))
@@ -64,13 +65,17 @@ def power_data():
     Returns: json with minutes and anomalous flag (green, yellow, red)
     """
     power = {}
-    query = connection.execute("SELECT power_consumption FROM system_monitoring \
+    query = connection.execute("SELECT timestamp, power_consumption FROM system_monitoring \
                                ORDER BY timestamp DESC LIMIT 30")
 
+    max_timestamp = datetime.datetime(1,1,1)
     for i, row in enumerate(query):
-        power[str(i+1)] = row["power_consumption"]
+        power[str(row["timestamp"])] = row["power_consumption"]
+        if row["timestamp"] > max_timestamp:
+            max_timestamp = row["timestamp"]
 
-    if power["30"] < 53 or power["30"] > 113:
+    max_timestamp_key = str(max_timestamp)
+    if power[max_timestamp_key] < 53 or power[max_timestamp_key] > 113:
         power["anomalous"] = "red"
     else:
         power["anomalous"] = "green"
