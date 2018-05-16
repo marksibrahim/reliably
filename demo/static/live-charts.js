@@ -61,8 +61,8 @@ var powerChart = new Chart(ctx, {
       label: "Power Consumption (hz)",
       data: [{x: new Date("2018-05-15 22:02:28.291601"),
               y: 10},
-            {x: new Date("2018-06-15 22:02:28.291601"),
-                  y: 20}
+            {x: new Date("2018-05-15 22:03:28.291601"),
+              y: 20}
       ],
       lineTension: 0,
       backgroundColor: 'transparent',
@@ -78,10 +78,24 @@ var powerChart = new Chart(ctx, {
                   beginAtZero: false
               }
           }],
-      },
+          xAxes: [{
+              type: 'time',
+              time: {
+                  unit: 'minute',
+                  unitStepSize: 1,
+                  displayFormats: {
+                      'minute': 'mm:ss'
+                  }
+              },
+              scaleLabel: {
+                  labelString: 'minutes',
+                  display: true
+              }
+          }],
     legend: {
       display: true,
-    }
+        }
+      }
   }
 });
 
@@ -211,7 +225,7 @@ function compareStrInt(a, b){
 
 // update every 2 seconds
 setInterval(function(){
- //updateFlowChart();
- //updatePowerChart();
- //updateTTFChart();
+ updateFlowChart();
+ updatePowerChart();
+ updateTTFChart();
 }, 10000);
