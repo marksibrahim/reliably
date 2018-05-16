@@ -5,7 +5,7 @@ var ctx2 = document.getElementById("flow-chart");
 var doughnut = new Chart(ctx2, {
   type: 'doughnut',
   data: {
-    labels: ["vibration", "pressure"],
+    labels: ["Vibration", "Pressure"],
     datasets: [
       {
         label: "monitored variables",
@@ -17,7 +17,7 @@ var doughnut = new Chart(ctx2, {
   options: {
     title: {
       display: true,
-      text: 'Monitoring'
+      text: 'Flow Monitoring'
     }
   }
 });
@@ -33,14 +33,14 @@ function updateFlowChart() {
       console.log(data);
       // transform data into arrays for chart
       var values = [data["coeff1"], data["coeff2"]];
-      var labels = ["vibration", "pressure"];
+      var labels = ["Vibration", "Pressure"];
       // update doughnut chart
       doughnut.data.datasets[0].data = values;
       doughnut.data.datasets[0].labels = labels;
       doughnut.update();
       // update excpected value
       var expectedFlow = data["expect_flow"].toFixed(2);
-      $('#expected-flow').html("Expected Flow " + expectedFlow);
+      $('#expected-flow').html("Expected Flow (l) " + expectedFlow);
     },
     error: function (xhr, status) {
       alert("Sorry, there was a problem!");
@@ -199,7 +199,7 @@ var ttfChart = new Chart(ctx3, {
     options: {
         title: {
             display: true,
-            text: 'TTF'
+            text: 'Reliability Modeling'
         }
     }
 });
