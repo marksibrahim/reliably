@@ -137,20 +137,19 @@ function updatePowerChart() {
     success: function (data) {
       console.log(data);
       // transform data into arrays for chart
-      var labels = [];
       var values = [];
 
       // get sorted keys and associated values
-      Object.keys(data).sort(compareStrInt).forEach(function(key) {
+      Object.keys(data).sort().forEach(function(key) {
           if (key != "anomalous") {
-              labels.push(key);
-              values.push(data[key]);
+              var xDate = new Date(key);
+              var value = {x: xDate, y: data[key]};
+              values.push(value);
           }
       });
 
       // update power chart
       powerChart.data.datasets[0].data = values;
-      powerChart.data.labels = labels;
       powerChart.update();
 
       // update anomaly stats
@@ -253,6 +252,6 @@ function compareStrInt(a, b){
 // update every 2 seconds
 setInterval(function(){
  updateFlowChart();
- //updatePowerChart();
+ updatePowerChart();
  updateTTFChart();
 }, 2000);
