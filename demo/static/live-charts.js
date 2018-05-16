@@ -234,7 +234,7 @@ function updateTTFChart() {
 
             // update lambda value
             var lambdaVal = data["lambda"].toFixed(3);
-            $('#lambda').html('<b>&lambda;</b> =' + lambdaVal);
+            $('#lambda').html('<b>&lambda;</b> = ' + lambdaVal);
         },
         error: function (xhr, status) {
             alert("Sorry, there was a problem updating power chart!");
