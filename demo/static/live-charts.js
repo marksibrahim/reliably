@@ -57,12 +57,13 @@ var ctx = document.getElementById("power-chart");
 var powerChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["1", "2", "3", "4","5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15",
-            "16", "17", "18", "19", "20","21", "22", "23", "24", "25","26", "27", "28", "29", "30"],
     datasets: [{
       label: "Power Consumption (hz)",
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0],
+      data: [{x: new Date("2018-05-15 22:02:28.291601"),
+              y: 10},
+            {x: new Date("2018-06-15 22:02:28.291601"),
+                  y: 20}
+      ],
       lineTension: 0,
       backgroundColor: 'transparent',
       borderColor: '#007bff',
@@ -71,13 +72,13 @@ var powerChart = new Chart(ctx, {
     }]
   },
   options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: false
-        }
-      }]
-    },
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero: false
+              }
+          }],
+      },
     legend: {
       display: true,
     }
@@ -210,7 +211,7 @@ function compareStrInt(a, b){
 
 // update every 2 seconds
 setInterval(function(){
- updateFlowChart();
- updatePowerChart();
- updateTTFChart();
+ //updateFlowChart();
+ //updatePowerChart();
+ //updateTTFChart();
 }, 10000);
