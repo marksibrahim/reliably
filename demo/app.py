@@ -109,7 +109,7 @@ def ttf():
     for i, item in enumerate(input_reliability):
         ttf["reliability"][i+1] = np.exp(-ttf["lambda"]*item)
 
-        ttf["prob_fail"][i+1] = 1 - ttf["reliability"][i+1] + np.random.normal(0, .05)
+        ttf["prob_fail"][i+1] = 1 - ttf["reliability"][i+1]
         if ttf["prob_fail"][i+1] < 0:
             ttf["prob_fail"][i+1] = 0
 
