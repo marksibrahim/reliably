@@ -116,6 +116,38 @@ def ttf():
     return jsonify(ttf)
 
 
+@app.route("/data/flow_tracker")
+def flow_tracker():
+    """
+    Route for flow classification data
+
+    :return: Dictionary with raw data, timestamp, and status (degraded/normal)
+    """
+
+    flow = {}
+    flow["data"] = {}
+    flow["time"] = {}
+    flow["status"] = {}
+    flow["decision_boundary"] = {}
+    flow["decision_boundary"]["low"] = 12.
+    flow["decision_boundary"]["high"] = 65.
+
+    query = connection.execute("SELECT timestamp, flow FROM system_monitoring \
+                                   ORDER BY timestamp DESC LIMIT 20")
+
+    for i, row in enumerate(query):
+        flow["time"][i+1] = row["timestamp"]
+        flow["data"][i+1] = row["flow"]
+
+        if 65. > flow["data"][i+1] >= 12.:
+            flow["status"][i+1] = "Normal Operation"
+
+        else:
+            flow["status"][i+1] = "Degraded"
+
+    return jsonify(flow)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
