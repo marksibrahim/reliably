@@ -138,6 +138,7 @@ function updatePowerChart() {
       console.log(data);
       // transform data into arrays for chart
       var values = [];
+      var colors = [];
 
       // get sorted keys and associated values
       Object.keys(data).sort().forEach(function(key) {
