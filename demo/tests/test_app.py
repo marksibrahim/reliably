@@ -29,4 +29,11 @@ def test_power_data(client):
     power_data = client.get("/data/power")
     power_data_json = power_data.get_json()
 
-    assert power_data_json["anomalous"] in ("green", "red")
+    assert len(power_data_json) == 30
+
+    # check power_consumption and status are valid
+    for time in power_data_json:
+        assert "status" in power_data_json[time]
+        assert "power_consumption" in power_data_json[time]
+        assert power_data_json[time]["status"] in ("green", "red")
+

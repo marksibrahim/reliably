@@ -68,17 +68,15 @@ def power_data():
     query = connection.execute("SELECT timestamp, power_consumption FROM system_monitoring \
                                ORDER BY timestamp DESC LIMIT 30")
 
-    max_timestamp = datetime.datetime(1,1,1)
     for i, row in enumerate(query):
-        power[str(row["timestamp"])] = row["power_consumption"]
-        if row["timestamp"] > max_timestamp:
-            max_timestamp = row["timestamp"]
+        power_consumption =  row["power_consumption"]
 
-    max_timestamp_key = str(max_timestamp)
-    if power[max_timestamp_key] < 53 or power[max_timestamp_key] > 113:
-        power["anomalous"] = "red"
-    else:
-        power["anomalous"] = "green"
+        if power_consumption < 53 or power_consumption > 113:
+            status = "red"
+        else:
+            status = "green"
+        power[str(row["timestamp"])] = {"power_consumption": power_consumption,
+                                        "status": status}
 
     return jsonify(power)
 
