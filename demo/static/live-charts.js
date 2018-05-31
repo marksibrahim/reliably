@@ -22,7 +22,7 @@ var doughnut = new Chart(ctx2, {
   }
 });
 
-// Asynchronous Update 
+// Asynchronous Update Doughnut
 function updateFlowChart() {
   $.ajax({
     url: "/data/flow",
@@ -128,7 +128,7 @@ var powerChart = new Chart(ctx, {
 });
 
 
-// Asynchronous Update
+// Asynchronous Update Power Chart
 function updatePowerChart() {
   $.ajax({
     url: "/data/power",
@@ -193,28 +193,30 @@ var ttfChart = new Chart(ctx3, {
           data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           borderColor: '#007bff',
         },
-      {
-          label: 'Failure Time (Years)',
-          borderColor: '#ff0000',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          // Changes to scatter plot
-          showLine: false,
-          pointStyle: 'cross',
-
-        }
       ],
     labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
   },
-    options: {
-        title: {
-            display: true,
-            text: 'Reliability Modeling'
+  options: {
+    title: {
+      display: true,
+      text: 'Reliability Modeling'
+    },
+    scales: {
+      xAxes: [{
+        scaleLabel: {
+          labelString: 'years',
+          display: true
         }
+      }],
+      legend: {
+        display: true,
+      }
     }
+  }
 });
 
 
-// Asynchronous Update
+// Asynchronous Update ttf
 function updateTTFChart() {
     $.ajax({
         url: "/data/ttf",
@@ -226,18 +228,15 @@ function updateTTFChart() {
             // transform data into arrays for chart
             var labels = [];
             var reliabilityValues = [];
-            var failureValues = [];
 
             // get sorted keys and associated values
             Object.keys(data["reliability"]).sort(compareStrInt).forEach(function(key) {
                 labels.push(key);
-                failureValues.push(data["failure"][key]);
                 reliabilityValues.push(data["reliability"][key]);
             });
 
             // update chart values
             ttfChart.data.datasets[0].data = reliabilityValues;
-            ttfChart.data.datasets[1].data = failureValues;
             ttfChart.data.labels = labels;
             ttfChart.update();
 
