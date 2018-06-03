@@ -123,25 +123,19 @@ def flow_tracker():
     """
 
     flow = {}
-    flow["data"] = {}
-    flow["time"] = {}
-    flow["status"] = {}
-    flow["decision_boundary"] = {}
-    flow["decision_boundary"]["low"] = 12.
-    flow["decision_boundary"]["high"] = 65.
 
     query = connection.execute("SELECT timestamp, flow FROM system_monitoring \
                                    ORDER BY timestamp DESC LIMIT 20")
 
     for i, row in enumerate(query):
-        flow["time"][i+1] = row["timestamp"]
-        flow["data"][i+1] = row["flow"]
+        timestamp = str(row["timestamp"])
+        degraded = True
 
-        if 65. > flow["data"][i+1] >= 12.:
-            flow["status"][i+1] = "Normal Operation"
+        if 65. > row["flow"] >= 12.:
+            degraded = False
 
-        else:
-            flow["status"][i+1] = "Degraded"
+        flow[timestamp] = {"flow": row["flow"],
+                           "degraded": degraded}
 
     return jsonify(flow)
 
