@@ -43,7 +43,7 @@ function updateFlowChart() {
       $('#expected-flow').html("Expected Flow (l) " + expectedFlow);
     },
     error: function (xhr, status) {
-      alert("Sorry, there was a problem!");
+      console.log("Sorry, there was a problem!");
     },
     complete: function (xhr, status) {
       //$('#showresults').slideDown('slow')
@@ -174,7 +174,7 @@ function updatePowerChart() {
 
     },
     error: function (xhr, status) {
-      alert("Sorry, there was a problem updating power chart!");
+      console.log("Sorry, there was a problem updating power chart!");
     },
     complete: function (xhr, status) {
       //$('#showresults').slideDown('slow')
@@ -245,7 +245,7 @@ function updateTTFChart() {
             $('#lambda').html('<b>&lambda;</b> = ' + lambdaVal);
         },
         error: function (xhr, status) {
-            alert("Sorry, there was a problem updating power chart!");
+            console.log("Sorry, there was a problem updating power chart!");
         },
         complete: function (xhr, status) {
             //$('#showresults').slideDown('slow')
@@ -380,7 +380,7 @@ function updateFlowTrackerChart() {
 
         },
         error: function (xhr, status) {
-            alert("Sorry, there was a problem updating the flow tracker chart!");
+            console.log("Sorry, there was a problem updating the flow tracker chart!");
         },
         complete: function (xhr, status) {
             //$('#showresults').slideDown('slow')
