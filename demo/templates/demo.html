@@ -60,25 +60,25 @@
             <div class="container">
                 <div class="row">
                     <div class="col-s-12 col-md-6">
-                        <canvas  id="power-chart" width="600" height="400"></canvas>
+                        <canvas  id="power-chart" width="400" height="300"></canvas>
                         <p id="anomaly-status" class="text-center"> Status Ok </p>
 
                     </div>
                     <div class="col-s-12 col-md-6">
-                        <canvas  id="flow-chart" width="600" height="400"></canvas>
+                        <canvas  id="flow-chart" width="400" height="300"></canvas>
                         <p id="expected-flow" class="text-center"></p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-11 col-md-5">
-                        <canvas id="ttf-chart" width="600" height="400"></canvas>
+                        <canvas id="ttf-chart" width="400" height="300"></canvas>
                     </div>
                     <div class="col-1" style="margin-top: 10rem;">
                         <p id="lambda"><b>&lambda;</b> = 2.87</p>
                     </div>
                     <div class="col-xs-11 col-md-5">
-                        <canvas id="flow-tracker-chart" width="600" height="400"></canvas>
+                        <canvas id="flow-tracker-chart" width="400" height="300"></canvas>
                         <p id="flow-tracker-status" class="text-center"> Normal Flow</p>
                     </div>
                     <div class="col-1" style="margin-top: 10rem;">
@@ -93,10 +93,7 @@
 
 <!-- Bootstrap core JavaScript
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
@@ -107,11 +104,8 @@
 </script>
 
 <!-- Graphs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-
-<!-- Ajax -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
 <!-- Dashboard Charts -->
 <script type="text/javascript" src="{{ url_for('static', filename='live-charts.js') }}" )></script>
